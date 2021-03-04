@@ -236,15 +236,15 @@ public class MrKrabs extends ActivityHandler {
 
     @Override
     protected CompletableFuture<Void> onMembersAdded(
-        List<ChannelAccount> membersAdded,
-        TurnContext turnContext
+            List<ChannelAccount> membersAdded,
+            TurnContext turnContext
     ) {
         return membersAdded.stream()
-            .filter(
-                member -> !StringUtils
-                    .equals(member.getId(), turnContext.getActivity().getRecipient().getId())
-            ).map(channel -> turnContext.sendActivity(MessageFactory.text("Greetings From Mr. Krabs! Enter "+ startCmd +" to start!")))
-            .collect(CompletableFutures.toFutureList()).thenApply(resourceResponses -> null);
+                .filter(
+                        member -> !StringUtils
+                                .equals(member.getId(), turnContext.getActivity().getRecipient().getId())
+                ).map(channel -> turnContext.sendActivity(MessageFactory.text("Greetings From Mr. Krabs! Enter "+ startCmd +" to start!")))
+                .collect(CompletableFutures.toFutureList()).thenApply(resourceResponses -> null);
     }
 
 

@@ -1,0 +1,18 @@
+io/swcode/teams/bot/mrkrabs/ReportHandler.java
+ io.swcode.teams.bot.mrkrabs.ReportHandler
+io/swcode/teams/bot/mrkrabs/PenaltyHandler.java
+ io.swcode.teams.bot.mrkrabs.PenaltyHandler
+io/swcode/teams/bot/mrkrabs/Application.java
+ io.swcode.teams.bot.mrkrabs.Application
+io/swcode/teams/bot/mrkrabs/UserInputTracker.java
+ io.swcode.teams.bot.mrkrabs.UserInputTracker
+io/swcode/teams/bot/mrkrabs/DatabaseInterface.java
+ io.swcode.teams.bot.mrkrabs.DatabaseInterface
+io/swcode/teams/bot/mrkrabs/DbConnect.java
+ io.swcode.teams.bot.mrkrabs.DbConnect
+io/swcode/teams/bot/mrkrabs/MrKrabs.java
+ io.swcode.teams.bot.mrkrabs.MrKrabs
+ io.swcode.teams.bot.mrkrabs.MrKrabs$1
+io/swcode/teams/bot/mrkrabs/ConversationFlow.java
+ io.swcode.teams.bot.mrkrabs.ConversationFlow
+ io.swcode.teams.bot.mrkrabs.ConversationFlow$Question
