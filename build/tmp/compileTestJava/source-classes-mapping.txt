@@ -1,2 +1,0 @@
-io/swcode/teams/bot/dobbi/ApplicationTest.java
- io.swcode.teams.bot.dobbi.ApplicationTest
