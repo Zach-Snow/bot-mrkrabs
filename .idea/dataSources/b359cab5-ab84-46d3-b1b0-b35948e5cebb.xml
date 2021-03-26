@@ -267,7 +267,7 @@ false Antarctica/Vostok
 false Arctic/Longyearbyen
 false Asia/Aden
 false Asia/Almaty
-false Asia/Amman
+true Asia/Amman
 false Asia/Anadyr
 false Asia/Aqtau
 false Asia/Aqtobe
@@ -289,7 +289,7 @@ false Asia/Chongqing
 false Asia/Chungking
 false Asia/Colombo
 false Asia/Dacca
-false Asia/Damascus
+true Asia/Damascus
 false Asia/Dhaka
 false Asia/Dili
 false Asia/Dubai
@@ -305,7 +305,7 @@ false Asia/Irkutsk
 false Asia/Istanbul
 false Asia/Jakarta
 false Asia/Jayapura
-false Asia/Jerusalem
+true Asia/Jerusalem
 false Asia/Kabul
 false Asia/Kamchatka
 false Asia/Karachi
@@ -348,7 +348,7 @@ false Asia/Taipei
 false Asia/Tashkent
 false Asia/Tbilisi
 true Asia/Tehran
-false Asia/Tel_Aviv
+true Asia/Tel_Aviv
 false Asia/Thimbu
 false Asia/Thimphu
 false Asia/Tokyo
@@ -599,7 +599,7 @@ false Indian/Mauritius
 false Indian/Mayotte
 false Indian/Reunion
 true Iran
-false Israel
+true Israel
 false JAYT
 false JST
 false Jamaica
@@ -784,12 +784,12 @@ false YEKT
 false Z
 false Zulu
 </TimeZones>
-      <StartupTime>1616581821</StartupTime>
+      <StartupTime>1616755988</StartupTime>
     </root>
     <database id="2" parent="1" name="PenaltyBot">
       <ObjectId>24576</ObjectId>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>488</IntrospectionStateNumber>
+      <IntrospectionStateNumber>496</IntrospectionStateNumber>
       <Current>1</Current>
     </database>
     <database id="3" parent="1" name="postgres">
@@ -865,7 +865,7 @@ UC/10
 </Acl>
       <StateNumber>287</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>489</IntrospectionStateNumber>
+      <IntrospectionStateNumber>497</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <extension id="18" parent="2" name="plpgsql">
@@ -965,5 +965,17 @@ UC/10
       <HandlerId>335</HandlerId>
       <Type>index</Type>
     </access-method>
+    <table id="30" parent="17" name="bot_commands">
+      <ObjectId>24577</ObjectId>
+      <Comment>Commands for the bot</Comment>
+      <Owner>postgres</Owner>
+      <StateNumber>490</StateNumber>
+    </table>
+    <table id="31" parent="17" name="bot_users">
+      <ObjectId>24580</ObjectId>
+      <Comment>Users in the group</Comment>
+      <Owner>postgres</Owner>
+      <StateNumber>494</StateNumber>
+    </table>
   </database-model>
 </dataSource>
