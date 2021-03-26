@@ -789,7 +789,7 @@ false Zulu
     <database id="2" parent="1" name="PenaltyBot">
       <ObjectId>24576</ObjectId>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>496</IntrospectionStateNumber>
+      <IntrospectionStateNumber>528</IntrospectionStateNumber>
       <Current>1</Current>
     </database>
     <database id="3" parent="1" name="postgres">
@@ -865,7 +865,7 @@ UC/10
 </Acl>
       <StateNumber>287</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>497</IntrospectionStateNumber>
+      <IntrospectionStateNumber>529</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <extension id="18" parent="2" name="plpgsql">
@@ -969,7 +969,7 @@ UC/10
       <ObjectId>24577</ObjectId>
       <Comment>Commands for the bot</Comment>
       <Owner>postgres</Owner>
-      <StateNumber>490</StateNumber>
+      <StateNumber>521</StateNumber>
     </table>
     <table id="31" parent="17" name="bot_users">
       <ObjectId>24580</ObjectId>
@@ -977,5 +977,23 @@ UC/10
       <Owner>postgres</Owner>
       <StateNumber>494</StateNumber>
     </table>
+    <column id="32" parent="30" name="start_commands">
+      <Position>1</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <StateNumber>525</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="33" parent="30" name="penalty_commands">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <StateNumber>526</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="34" parent="30" name="report_commands">
+      <Position>3</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <StateNumber>527</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
   </database-model>
 </dataSource>
