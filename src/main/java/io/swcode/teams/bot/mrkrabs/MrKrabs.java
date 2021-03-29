@@ -41,6 +41,8 @@ public class MrKrabs extends ActivityHandler {
     private final BotState userState;
     private final BotState conversationState;
 
+
+
     public MrKrabs(ConversationState conversationState, UserState userState) {
         this.conversationState = conversationState;
         this.userState = userState;
@@ -82,11 +84,10 @@ public class MrKrabs extends ActivityHandler {
                 if(count ==2)
                 {
                     String [] splitInput = input.split (" ");
-                    String chekCmd = validateCommand(splitInput[0]);
-                    String chekName = validateName(splitInput[1]);
-                    String chekType = validateType(splitInput[2]);
+                    ValidateInput validateInput = new ValidateInput(splitInput[0],splitInput[1],splitInput[2]);
+                    boolean chekValidation = validateInput.retValidation();
 
-                    if (chekCmd.equals(penaltyState) && chekName.equals(penaltyState) && chekType.equals(penaltyState))
+                    if (chekValidation == true)
                     {
                         userInputTracker.command = splitInput[0];
                         userInputTracker.name = splitInput[1];
@@ -95,16 +96,6 @@ public class MrKrabs extends ActivityHandler {
                         return turnContext.sendActivity(String.format("You have chosen %s, User: %s and Type: %s.", userInputTracker.command, userInputTracker.name, userInputTracker.type), null, null)
                                 .thenCompose(result -> turnContext.sendActivity("Are you sure (Y/N) ?", null, null))
                                 .thenRun(() -> { conversationFlow.setLastQuestionAsked(ConversationFlow.Question.ConfirmPenalty); });
-                    }
-                    else if(chekCmd.equals(reportState) && chekName.equals(penaltyState) && chekType.equals(reportState))
-                    {
-                        userInputTracker.command = splitInput[0];
-                        userInputTracker.name = splitInput[1];
-                        userInputTracker.type = splitInput[2];
-
-                        return turnContext.sendActivity(String.format("You have chosen %s, User: %s and Type: %s.", userInputTracker.command, userInputTracker.name, userInputTracker.type), null, null)
-                                .thenCompose(result -> turnContext.sendActivity("Are you sure (Y/N) ?", null, null))
-                                .thenRun(() -> { conversationFlow.setLastQuestionAsked(ConversationFlow.Question.ConfirmReport); });
                     }
                     else
                     {
@@ -169,7 +160,7 @@ public class MrKrabs extends ActivityHandler {
 
     }
 
-    private String validateType(String getType)
+    /*private String validateType(String getType)
     {
         String retString;
         if(penaltyList.contains(getType))
@@ -231,7 +222,7 @@ public class MrKrabs extends ActivityHandler {
             retString = errorState;
         }
         return retString;
-    }
+    }*/
 
 
     @Override

@@ -19,6 +19,7 @@ dependencies {
     implementation("org.apache.logging.log4j:log4j-api:2.11.0")
     implementation("org.apache.logging.log4j:log4j-core:2.13.2")
     implementation("com.microsoft.bot:bot-integration-spring:4.6.0-preview8")
+    implementation ("org.postgresql:postgresql:42.2.10")
     testImplementation("junit:junit:4.13.1")
     testImplementation("org.springframework.boot:spring-boot-starter-test:2.4.0")
     testImplementation("org.junit.vintage:junit-vintage-engine:5.7.0")
