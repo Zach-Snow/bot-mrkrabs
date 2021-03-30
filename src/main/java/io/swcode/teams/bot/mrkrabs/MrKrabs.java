@@ -84,10 +84,14 @@ public class MrKrabs extends ActivityHandler {
                 if(count ==2)
                 {
                     String [] splitInput = input.split (" ");
-                    ValidateInput validateInput = new ValidateInput(splitInput[0],splitInput[1],splitInput[2]);
-                    boolean chekValidation = validateInput.retValidation();
+                    ValidateCommand validateCommand = new ValidateCommand(splitInput[0]);
+                    ValidateUser validateUser = new ValidateUser(splitInput[1]);
+                    ValidateType validateType = new ValidateType(splitInput[2]);
+                    boolean chekCmd = validateCommand.retValidation();
+                    boolean chekUser = validateUser.retValidation();
+                    boolean chekTyp = validateType.retValidation();
 
-                    if (chekValidation == true)
+                    if (chekCmd == true && chekUser == true && chekTyp == true)
                     {
                         userInputTracker.command = splitInput[0];
                         userInputTracker.name = splitInput[1];
