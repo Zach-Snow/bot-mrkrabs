@@ -15,7 +15,7 @@ public class ValidateCommand implements DatabaseInterface {
     private final String url = "jdbc:postgresql://localhost:5432/Penalty_bot";
     private final String dbUser = "Zakir";
     private final String passWord = "Zakir@413318";
-    private final String comValid = "SELECT command_type FROM bot_commands WHERE command_type ='" + command + "'";
+    private final String comValid = "SELECT command_type FROM bot_commands WHERE command_type ='"+command+"'";
 
 
     public ValidateCommand(String command)
@@ -33,26 +33,29 @@ public class ValidateCommand implements DatabaseInterface {
 
     @Override
     public void executeQuery() {
+        Connection connection = null;
         try
         {
-            Connection connection = null;
             Class.forName("org.postgresql.Driver");
             connection = DriverManager.getConnection(url, dbUser, passWord);
             System.out.println("Connected to PostgreSQL database!");
             Statement statement = connection.createStatement();
-            ResultSet commandVal = statement.executeQuery(comValid);
+            ResultSet commandVal = statement.executeQuery("SELECT command_type FROM bot_commands WHERE command_type ='"+command+"'");
             while (commandVal.next())
             {
                 String getComVal = commandVal.getString("command_type");
+                System.out.println(getComVal);
                 if(getComVal.equals(command))
                 {
                     validation = true;
                 }
-                else
-                {
-                    validation = false;
-                }
+                else{}
             }
+            statement.close();
+            commandVal.close();
+
+
+
         }
         catch (SQLException | ClassNotFoundException e) {
             System.out.println("Connection failure.");

@@ -32,7 +32,7 @@ public class ValidateUser implements DatabaseInterface {
             connection = DriverManager.getConnection(url, dbUser, passWord);
             System.out.println("Connected to PostgreSQL database!");
             Statement statement = connection.createStatement();
-            ResultSet userVal = statement.executeQuery(userValid);
+            ResultSet userVal = statement.executeQuery("SELECT user_name FROM penalty_user WHERE user_name ='" + user + "'");
             while (userVal.next())
             {
                 String getUsrVal = userVal.getString("user_name");

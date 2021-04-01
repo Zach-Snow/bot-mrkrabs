@@ -35,7 +35,7 @@ public class ValidateType implements DatabaseInterface {
             connection = DriverManager.getConnection(url, dbUser, passWord);
             System.out.println("Connected to PostgreSQL database!");
             Statement statement = connection.createStatement();
-            ResultSet penTypVal = statement.executeQuery(penTypeValid);
+            ResultSet penTypVal = statement.executeQuery("SELECT penalty_type FROM bot_commands WHERE penalty_type = '" + type + "'");
             //ResultSet repTypVal = statement.executeQuery(repTypeValid);
             while (penTypVal.next())
             {
@@ -44,10 +44,7 @@ public class ValidateType implements DatabaseInterface {
                 {
                     validation = true;
                 }
-                else
-                {
-                    validation = false;
-                }
+                else {}
             }
         }
         catch (SQLException | ClassNotFoundException e) {
