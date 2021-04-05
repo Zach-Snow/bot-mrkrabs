@@ -22,7 +22,6 @@ public class ValidateCommand implements DatabaseInterface {
         this.command = command;
     }
 
-    @Override
     public boolean retValidation()
     {
         executeQuery();
@@ -32,9 +31,10 @@ public class ValidateCommand implements DatabaseInterface {
 
     @Override
     public void executeQuery() {
-        Connection connection = null;
+
         try
         {
+            Connection connection = null;
             Class.forName("org.postgresql.Driver");
             connection = DriverManager.getConnection(url, dbUser, passWord);
             System.out.println("Connected to PostgreSQL database!");

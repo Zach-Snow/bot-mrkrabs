@@ -8,10 +8,7 @@ import com.microsoft.bot.builder.*;
 import com.microsoft.bot.schema.ChannelAccount;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 
 /**
@@ -27,7 +24,9 @@ public class MrKrabs extends ActivityHandler {
 
     /**No values should be initiated here as it holds the same value for all instances
      * These are for testing purposes, these will be replaced with data from database*/
-    private  final Set <String> serviceList = new HashSet<>(Arrays.asList("/penalty","/report"));
+    ShowData showData = new ShowData();
+
+    private  final List serviceList = showData.resultSetToHashmap();
     private  final Set <String>  penaltyList = Set.of("late", "rude", "disrespect");
     private  final Set <String>  reportList = Set.of("aggregate", "aggregateAll");
 

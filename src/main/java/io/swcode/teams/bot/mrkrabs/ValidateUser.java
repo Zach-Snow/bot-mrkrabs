@@ -15,7 +15,6 @@ public class ValidateUser implements DatabaseInterface {
         this.user = user;
     }
 
-    @Override
     public boolean retValidation()
     {
         executeQuery();
