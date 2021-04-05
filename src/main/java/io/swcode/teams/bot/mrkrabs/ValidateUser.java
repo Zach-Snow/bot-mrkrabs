@@ -9,7 +9,6 @@ public class ValidateUser implements DatabaseInterface {
     private final String url = "jdbc:postgresql://localhost:5432/Penalty_bot";
     private final String dbUser = "Zakir";
     private final String passWord = "Zakir@413318";
-    private final String userValid = "SELECT user_name FROM penalty_user WHERE user_name ='" + user + "'";
 
     public ValidateUser (String user)
     {
@@ -45,6 +44,8 @@ public class ValidateUser implements DatabaseInterface {
                     validation = false;
                 }
             }
+            statement.close();
+            userVal.close();
         }
         catch (SQLException | ClassNotFoundException e) {
             System.out.println("Connection failure.");

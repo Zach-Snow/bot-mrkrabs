@@ -15,7 +15,6 @@ public class ValidateCommand implements DatabaseInterface {
     private final String url = "jdbc:postgresql://localhost:5432/Penalty_bot";
     private final String dbUser = "Zakir";
     private final String passWord = "Zakir@413318";
-    private final String comValid = "SELECT command_type FROM bot_commands WHERE command_type ='"+command+"'";
 
 
     public ValidateCommand(String command)
@@ -53,9 +52,6 @@ public class ValidateCommand implements DatabaseInterface {
             }
             statement.close();
             commandVal.close();
-
-
-
         }
         catch (SQLException | ClassNotFoundException e) {
             System.out.println("Connection failure.");

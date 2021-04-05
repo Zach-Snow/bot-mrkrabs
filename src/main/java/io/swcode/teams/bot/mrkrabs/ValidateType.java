@@ -10,8 +10,6 @@ public class ValidateType implements DatabaseInterface {
     private final String dbUser = "Zakir";
     private final String passWord = "Zakir@413318";
 
-    private final String penTypeValid = "SELECT penalty_type FROM bot_commands WHERE penalty_type = '" + type + "'";
-    //private final String repTypeValid = "SELECT report_type FROM bot_commands WHERE report_type = '" + type + "'";
 
     public ValidateType(String type)
     {
@@ -36,7 +34,6 @@ public class ValidateType implements DatabaseInterface {
             System.out.println("Connected to PostgreSQL database!");
             Statement statement = connection.createStatement();
             ResultSet penTypVal = statement.executeQuery("SELECT penalty_type FROM bot_commands WHERE penalty_type = '" + type + "'");
-            //ResultSet repTypVal = statement.executeQuery(repTypeValid);
             while (penTypVal.next())
             {
                 String getTypVal = penTypVal.getString("penalty_type");
@@ -46,6 +43,9 @@ public class ValidateType implements DatabaseInterface {
                 }
                 else {}
             }
+            statement.close();
+            penTypVal.close();
+
         }
         catch (SQLException | ClassNotFoundException e) {
             System.out.println("Connection failure.");

@@ -33,9 +33,6 @@ public class MrKrabs extends ActivityHandler {
 
     /**To track the state in switch case scenarios*/
     private final String startCmd = "/S";
-    private final String penaltyState ="1";
-    private final String reportState ="2";
-    private final String errorState = "3";
 
 
     private final BotState userState;
@@ -163,71 +160,6 @@ public class MrKrabs extends ActivityHandler {
         }
 
     }
-
-    /*private String validateType(String getType)
-    {
-        String retString;
-        if(penaltyList.contains(getType))
-        {
-            retString = penaltyState;
-        }
-        else if (reportList.contains(getType))
-        {
-            retString = reportState;
-        }
-        else if (getType ==null)
-        {
-            retString = errorState;
-        }
-        else
-        {
-            retString = errorState;
-        }
-        return retString;
-    }
-
-
-    public String validateCommand(String getCommand)
-    {
-        String retString;
-        if (serviceList.contains(getCommand) && getCommand.equalsIgnoreCase("/penalty"))
-        {
-            retString = penaltyState;
-        }
-        else if(serviceList.contains(getCommand) && getCommand.equalsIgnoreCase("/report"))
-        {
-            retString =reportState;
-        }
-        else
-        {
-            retString = errorState;
-        }
-        return retString;
-    }
-
-    public String validateName(String getName)
-    {
-        String retString;
-        String userIDChk = "@swcode.io";
-        if(getName.endsWith(userIDChk))
-        {
-            if(getName.equals(userIDChk))
-            {
-                retString =errorState;
-            }
-            else
-            {
-                retString = penaltyState;
-            }
-
-        }
-        else
-        {
-            retString = errorState;
-        }
-        return retString;
-    }*/
-
 
     @Override
     protected CompletableFuture<Void> onMembersAdded(
