@@ -11,29 +11,37 @@ public class ShowData {
 
 
 
-    public List  resultSetToHashmap()  {
+    public List  resultSetToHashmapCommand()  {
         try
         {
-            Connection connection = null;
+            Connection comConnection = null;
+            Connection comDescConnection = null;
             Class.forName("org.postgresql.Driver");
-            connection = DriverManager.getConnection(url, dbUser, passWord);
+            comConnection = DriverManager.getConnection(url, dbUser, passWord);
+            comDescConnection = DriverManager.getConnection(url, dbUser, passWord);
             System.out.println("Connected to PostgreSQL database!");
-            Statement statement = connection.createStatement();
-            ResultSet retCommands = statement.executeQuery("SELECT command_type, report_type, penalty_type  FROM bot_commands");
+            Statement comStatement = comConnection.createStatement();
+            Statement comDescStatement = comDescConnection.createStatement();
+            ResultSet retCommands = comStatement.executeQuery("SELECT command_type FROM bot_commands");
+            ResultSet retComDesc = comDescStatement.executeQuery("SELECT  command_desc  FROM bot_commands");
             ResultSetMetaData metaData = retCommands.getMetaData();
             int columns = metaData.getColumnCount();
-            while (retCommands.next())
+            while (retCommands.next() && retComDesc.next())
             {
                 HashMap row = new HashMap(columns);
                 for (int i=1; i<=columns; i++ )
                 {
-                    row.put(metaData.getColumnName(i), retCommands.getObject(i));
+                    String desc = retComDesc.getString("command_desc");
+                    row.put(retCommands.getObject(i), desc);
 
                 }
                 list.add(row);
+
             }
-            statement.close();
+            comStatement.close();
+            comDescStatement.close();
             retCommands.close();
+            retComDesc.close();
         }
 
         catch (SQLException | ClassNotFoundException e) {

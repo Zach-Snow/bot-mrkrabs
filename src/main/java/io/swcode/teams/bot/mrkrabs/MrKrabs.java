@@ -1,6 +1,3 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
 package io.swcode.teams.bot.mrkrabs;
 
 import com.codepoetics.protonpack.collectors.CompletableFutures;
@@ -8,8 +5,13 @@ import com.microsoft.bot.builder.*;
 import com.microsoft.bot.schema.ChannelAccount;
 import org.apache.commons.lang3.StringUtils;
 
+import java.sql.Array;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.stream.Stream;
 
 /**
  * This class implements the functionality of the Bot.
@@ -26,7 +28,10 @@ public class MrKrabs extends ActivityHandler {
      * These are for testing purposes, these will be replaced with data from database*/
     ShowData showData = new ShowData();
 
-    private  final List serviceList = showData.resultSetToHashmap();
+    private final List<String> serviceList = showData.resultSetToHashmapCommand();
+
+
+
     private  final Set <String>  penaltyList = Set.of("late", "rude", "disrespect");
     private  final Set <String>  reportList = Set.of("aggregate", "aggregateAll");
 
@@ -43,6 +48,7 @@ public class MrKrabs extends ActivityHandler {
         this.conversationState = conversationState;
         this.userState = userState;
     }
+
 
 
     @Override
