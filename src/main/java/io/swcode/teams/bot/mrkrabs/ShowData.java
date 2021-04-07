@@ -7,11 +7,11 @@ public class ShowData {
     private final String url = "jdbc:postgresql://localhost:5432/Penalty_bot";
     private final String dbUser = "Zakir";
     private final String passWord = "Zakir@413318";
-    ArrayList list = new ArrayList(100);
 
 
 
-    public List  resultSetToHashmapCommand()  {
+    public String  serviceResultSetToHashmapCommand()  {
+        ArrayList serviceList = new ArrayList(100);
         try
         {
             Connection comConnection = null;
@@ -19,10 +19,9 @@ public class ShowData {
             Class.forName("org.postgresql.Driver");
             comConnection = DriverManager.getConnection(url, dbUser, passWord);
             comDescConnection = DriverManager.getConnection(url, dbUser, passWord);
-            System.out.println("Connected to PostgreSQL database!");
             Statement comStatement = comConnection.createStatement();
             Statement comDescStatement = comDescConnection.createStatement();
-            ResultSet retCommands = comStatement.executeQuery("SELECT command_type FROM bot_commands");
+            ResultSet retCommands = comStatement.executeQuery("SELECT command_type FROM bot_commands ORDER BY id");
             ResultSet retComDesc = comDescStatement.executeQuery("SELECT  command_desc  FROM bot_commands");
             ResultSetMetaData metaData = retCommands.getMetaData();
             int columns = metaData.getColumnCount();
@@ -35,7 +34,7 @@ public class ShowData {
                     row.put(retCommands.getObject(i), desc);
 
                 }
-                list.add(row);
+                serviceList.add(row);
 
             }
             comStatement.close();
@@ -48,8 +47,91 @@ public class ShowData {
             System.out.println("Connection failure.");
             e.printStackTrace();
         }
-        System.out.println(list);
-        return list;
+
+        String retrivedService = serviceList.toString().replace("{", "")
+                .replace("}","")
+                .replace("[","")
+                .replace("]","");
+        return retrivedService;
+    }
+
+
+    public String  penaltyResultSetToHashmapCommand()  {
+        ArrayList penaltyList = new ArrayList(100);
+        try
+        {
+            Connection comConnection = null;
+            Class.forName("org.postgresql.Driver");
+            comConnection = DriverManager.getConnection(url, dbUser, passWord);
+            Statement comStatement = comConnection.createStatement();
+            ResultSet retCommands = comStatement.executeQuery("SELECT penalty_type FROM bot_commands");
+            ResultSetMetaData metaData = retCommands.getMetaData();
+            int columns = metaData.getColumnCount();
+            while (retCommands.next())
+            {
+                HashMap row = new HashMap(columns);
+                for (int i=1; i<=columns; i++ )
+                {
+                    row.put(retCommands.getObject(i), null);
+
+                }
+                penaltyList.add(row);
+
+            }
+            comStatement.close();
+            retCommands.close();
+        }
+
+        catch (SQLException | ClassNotFoundException e) {
+            System.out.println("Connection failure.");
+            e.printStackTrace();
+        }
+
+        String retrivedService = penaltyList.toString().replace("{", "")
+                .replace("}","")
+                .replace("[","")
+                .replace("]","")
+                .replace("=null", "");
+        return retrivedService;
+    }
+
+    public String  reportResultSetToHashmapCommand()  {
+        ArrayList reportList = new ArrayList(100);
+        try
+        {
+            Connection comConnection = null;
+            Class.forName("org.postgresql.Driver");
+            comConnection = DriverManager.getConnection(url, dbUser, passWord);
+            Statement comStatement = comConnection.createStatement();
+            ResultSet retCommands = comStatement.executeQuery("SELECT report_type FROM bot_commands");
+            ResultSetMetaData metaData = retCommands.getMetaData();
+            int columns = metaData.getColumnCount();
+            while (retCommands.next())
+            {
+                HashMap row = new HashMap(columns);
+                for (int i=1; i<=columns; i++ )
+                {
+                    row.put(retCommands.getObject(i), null);
+
+                }
+                reportList.add(row);
+
+            }
+            comStatement.close();
+            retCommands.close();
+        }
+
+        catch (SQLException | ClassNotFoundException e) {
+            System.out.println("Connection failure.");
+            e.printStackTrace();
+        }
+
+        String retrivedService = reportList.toString().replace("{", "")
+                .replace("}","")
+                .replace("[","")
+                .replace("]","")
+                .replace("=null", "");
+        return retrivedService;
     }
 
 }
