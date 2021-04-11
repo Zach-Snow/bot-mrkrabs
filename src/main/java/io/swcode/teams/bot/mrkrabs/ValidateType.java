@@ -2,7 +2,7 @@ package io.swcode.teams.bot.mrkrabs;
 
 import java.sql.*;
 
-public class ValidateType implements DatabaseInterface {
+public class ValidateType implements DatabaseReportInterface {
     private String type;
     private boolean validation = false;
 

@@ -1,10 +1,9 @@
 package io.swcode.teams.bot.mrkrabs;
 
 import java.sql.*;
-import java.util.Set;
 
 
-public class ValidateCommand implements DatabaseInterface {
+public class ValidateCommand implements DatabaseReportInterface {
     private String command;
 
     private boolean validation = false;
@@ -22,6 +21,7 @@ public class ValidateCommand implements DatabaseInterface {
         this.command = command;
     }
 
+    @Override
     public boolean retValidation()
     {
         executeQuery();

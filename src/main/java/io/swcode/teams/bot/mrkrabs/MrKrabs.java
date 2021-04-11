@@ -13,11 +13,11 @@ public class MrKrabs extends ActivityHandler {
 
     /**No values should be initiated here as it holds the same value for all instances
      * These are for testing purposes, these will be replaced with data from database*/
-    ShowData showData = new ShowData();
+    DataHashmapReturn showData = new DataHashmapReturn();
 
-    private final String serviceViewable = showData.ResultSetToHashmapCommand("command_type");
-    private final String penaltyViewable = showData.ResultSetToHashmapCommand("penalty_type");
-    private final String reportViewable  = showData.ResultSetToHashmapCommand("report_type");
+    private final String serviceViewable = showData.ResultSetToHashmap("command_type");
+    private final String penaltyViewable = showData.ResultSetToHashmap("penalty_type");
+    private final String reportViewable  = showData.ResultSetToHashmap("report_type");
 
     /**To track the state in switch case scenarios*/
     private final String startCmd = "/S";

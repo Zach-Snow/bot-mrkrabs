@@ -2,15 +2,14 @@ package io.swcode.teams.bot.mrkrabs;
 import java.sql.*;
 import java.util.*;
 
-public class ShowData {
+public class DataHashmapReturn implements  DatabaseViewableInterface{
 
     private final String url = "jdbc:postgresql://localhost:5432/Penalty_bot";
     private final String dbUser = "Zakir";
     private final String passWord = "Zakir@413318";
 
-
-
-    public String  ResultSetToHashmapCommand(String getViewable)  {
+    @Override
+    public String  ResultSetToHashmap(String getViewable)  {
         ArrayList viewableList = new ArrayList(100);
         try
         {
