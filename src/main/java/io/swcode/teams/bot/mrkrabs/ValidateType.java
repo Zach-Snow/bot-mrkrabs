@@ -16,7 +16,6 @@ public class ValidateType implements DatabaseInterface {
         this.type = type;
     }
 
-    @Override
     public boolean retValidation()
     {
         executeQuery();

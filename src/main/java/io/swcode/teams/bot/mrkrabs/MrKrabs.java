@@ -1,35 +1,23 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
 package io.swcode.teams.bot.mrkrabs;
 
 import com.codepoetics.protonpack.collectors.CompletableFutures;
 import com.microsoft.bot.builder.*;
 import com.microsoft.bot.schema.ChannelAccount;
 import org.apache.commons.lang3.StringUtils;
-
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
+import java.util.List;
 
-/**
- * This class implements the functionality of the Bot.
- *
- * <p>
- * This is where application specific logic for interacting with the users would be added. For this
- * sample, the {@link #onMessageActivity(TurnContext)} echos the text back to the user. The {@link
- * #onMembersAdded(List, TurnContext)} will send a greeting to new conversation participants.
- * </p>
- */
+
 public class MrKrabs extends ActivityHandler {
 
     /**No values should be initiated here as it holds the same value for all instances
      * These are for testing purposes, these will be replaced with data from database*/
-    private  final Set <String> serviceList = new HashSet<>(Arrays.asList("/penalty","/report"));
-    private  final Set <String>  penaltyList = Set.of("late", "rude", "disrespect");
-    private  final Set <String>  reportList = Set.of("aggregate", "aggregateAll");
+    ShowData showData = new ShowData();
+
+    private final String serviceViewable = showData.ResultSetToHashmapCommand("command_type");
+    private final String penaltyViewable = showData.ResultSetToHashmapCommand("penalty_type");
+    private final String reportViewable  = showData.ResultSetToHashmapCommand("report_type");
 
     /**To track the state in switch case scenarios*/
     private final String startCmd = "/S";
@@ -44,6 +32,7 @@ public class MrKrabs extends ActivityHandler {
         this.conversationState = conversationState;
         this.userState = userState;
     }
+
 
 
     @Override
@@ -73,8 +62,8 @@ public class MrKrabs extends ActivityHandler {
         switch (conversationFlow.getLastQuestionAsked())
         {
             case None:
-                return turnContext.sendActivity("What is your command? Available one's are as follows,"+"\r\n" +"Service list: "+serviceList+"\r\n"+ "Penalty types: "+penaltyList+"\r\n"+
-                        "Report Types: "+reportList+"\r\n"+"Format -> /command name@swcode.io type", null, null)
+                return turnContext.sendActivity("What is your command? Available one's are as follows,"+"\r\n" +"Service list: "+serviceViewable+"\r\n"+ "Penalty types: "+penaltyViewable+"\r\n"+
+                        "Report Types: "+reportViewable+"\r\n"+"Format -> /command name@swcode.io type", null, null)
                         .thenRun(() -> {conversationFlow.setLastQuestionAsked(ConversationFlow.Question.Command);});
             case Command:
                 int count = StringUtils.countMatches(input, " ");
