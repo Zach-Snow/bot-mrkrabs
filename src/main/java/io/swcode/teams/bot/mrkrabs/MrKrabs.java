@@ -15,9 +15,9 @@ public class MrKrabs extends ActivityHandler {
      * These are for testing purposes, these will be replaced with data from database*/
     ShowData showData = new ShowData();
 
-    private final String serviceViewable = showData.serviceResultSetToHashmapCommand();
-    private final String penaltyViewable = showData.penaltyResultSetToHashmapCommand();
-    private final String reportViewable  = showData.reportResultSetToHashmapCommand();
+    private final String serviceViewable = showData.ResultSetToHashmapCommand("command_type");
+    private final String penaltyViewable = showData.ResultSetToHashmapCommand("penalty_type");
+    private final String reportViewable  = showData.ResultSetToHashmapCommand("report_type");
 
     /**To track the state in switch case scenarios*/
     private final String startCmd = "/S";
