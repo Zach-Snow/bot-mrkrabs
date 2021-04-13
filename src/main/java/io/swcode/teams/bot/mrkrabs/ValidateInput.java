@@ -3,34 +3,27 @@ package io.swcode.teams.bot.mrkrabs;
 import java.sql.*;
 
 
-public class ValidateCommand implements DatabaseReportInterface {
-    private String command;
+public class ValidateInput implements DatabaseReportInterface {
+    private String input;
 
     private boolean validation = false;
 
-    /**
-     * Database connection stuff
-     */
     private final String url = "jdbc:postgresql://localhost:5432/Penalty_bot";
     private final String dbUser = "Zakir";
     private final String passWord = "Zakir@413318";
 
 
-    public ValidateCommand(String command)
-    {
-        this.command = command;
-    }
-
     @Override
-    public boolean retValidation()
+    public boolean retValidation(String input, String tableRow, String tableName)
     {
-        executeQuery();
+        this.input = input;
+        executeQuery(tableRow, tableName);
         return validation;
     }
 
 
     @Override
-    public void executeQuery() {
+    public void executeQuery(String tableRow, String tableName) {
 
         try
         {
@@ -39,12 +32,12 @@ public class ValidateCommand implements DatabaseReportInterface {
             connection = DriverManager.getConnection(url, dbUser, passWord);
             System.out.println("Connected to PostgreSQL database!");
             Statement statement = connection.createStatement();
-            ResultSet commandVal = statement.executeQuery("SELECT command_type FROM bot_commands WHERE command_type ='"+command+"'");
+            ResultSet commandVal = statement.executeQuery("SELECT "+tableRow+" FROM "+tableName+" WHERE "+tableRow+" ='"+input+"'");
             while (commandVal.next())
             {
-                String getComVal = commandVal.getString("command_type");
+                String getComVal = commandVal.getString(tableRow);
                 System.out.println(getComVal);
-                if(getComVal.equals(command))
+                if(getComVal.equals(input))
                 {
                     validation = true;
                 }

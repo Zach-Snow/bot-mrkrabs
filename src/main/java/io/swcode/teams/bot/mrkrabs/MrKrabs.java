@@ -4,7 +4,7 @@ import com.codepoetics.protonpack.collectors.CompletableFutures;
 import com.microsoft.bot.builder.*;
 import com.microsoft.bot.schema.ChannelAccount;
 import org.apache.commons.lang3.StringUtils;
-import java.util.*;
+
 import java.util.concurrent.CompletableFuture;
 import java.util.List;
 
@@ -70,12 +70,10 @@ public class MrKrabs extends ActivityHandler {
                 if(count ==2)
                 {
                     String [] splitInput = input.split (" ");
-                    ValidateCommand validateCommand = new ValidateCommand(splitInput[0]);
-                    ValidateUser validateUser = new ValidateUser(splitInput[1]);
-                    ValidateType validateType = new ValidateType(splitInput[2]);
-                    boolean chekCmd = validateCommand.retValidation();
-                    boolean chekUser = validateUser.retValidation();
-                    boolean chekTyp = validateType.retValidation();
+                    ValidateInput validateCommand = new ValidateInput();
+                    boolean chekCmd = validateCommand.retValidation(splitInput[0],"command_type", "bot_commands");
+                    boolean chekUser = validateCommand.retValidation(splitInput[1], "user_name","penalty_user");
+                    boolean chekTyp = validateCommand.retValidation(splitInput[2],"command_type", "bot_commands");
 
                     if (chekCmd == true && chekUser == true && chekTyp == true)
                     {
