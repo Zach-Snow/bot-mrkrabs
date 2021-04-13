@@ -70,10 +70,10 @@ public class MrKrabs extends ActivityHandler {
                 if(count ==2)
                 {
                     String [] splitInput = input.split (" ");
-                    ValidateInput validateCommand = new ValidateInput();
-                    boolean chekCmd = validateCommand.retValidation(splitInput[0],"command_type", "bot_commands");
-                    boolean chekUser = validateCommand.retValidation(splitInput[1], "user_name","penalty_user");
-                    boolean chekTyp = validateCommand.retValidation(splitInput[2],"command_type", "bot_commands");
+                    ValidateInput validateInput = new ValidateInput();
+                    boolean chekCmd = validateInput.retValidation(splitInput[0],"command_type", "bot_commands");
+                    boolean chekUser = validateInput.retValidation(splitInput[1], "user_name","penalty_user");
+                    boolean chekTyp = validateInput.retValidation(splitInput[2],"command_type", "bot_commands");
 
                     if (chekCmd == true && chekUser == true && chekTyp == true)
                     {
