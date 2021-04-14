@@ -12,11 +12,15 @@ public class ValidateInput implements DatabaseReportInterface {
     private final String dbUser = "Zakir";
     private final String passWord = "Zakir@413318";
 
-
-    @Override
-    public boolean retValidation(String input, String tableRow, String tableName)
+    public ValidateInput(String input)
     {
         this.input = input;
+    }
+
+
+    @Override
+    public boolean retValidation(String tableRow, String tableName)
+    {
         executeQuery(tableRow, tableName);
         return validation;
     }

@@ -11,10 +11,9 @@ import java.util.List;
 
 public class MrKrabs extends ActivityHandler {
 
-    /**No values should be initiated here as it holds the same value for all instances
-     * These are for testing purposes, these will be replaced with data from database*/
-    DataHashmapReturn showData = new DataHashmapReturn();
+    /**No values should be initiated here as it holds the same value for all instances*/
 
+    DataHashmapReturn showData = new DataHashmapReturn();
     private final String serviceViewable = showData.ResultSetToHashmap("command_type");
     private final String penaltyViewable = showData.ResultSetToHashmap("penalty_type");
     private final String reportViewable  = showData.ResultSetToHashmap("report_type");
@@ -70,10 +69,13 @@ public class MrKrabs extends ActivityHandler {
                 if(count ==2)
                 {
                     String [] splitInput = input.split (" ");
-                    ValidateInput validateInput = new ValidateInput();
-                    boolean chekCmd = validateInput.retValidation(splitInput[0],"command_type", "bot_commands");
-                    boolean chekUser = validateInput.retValidation(splitInput[1], "user_name","penalty_user");
-                    boolean chekTyp = validateInput.retValidation(splitInput[2],"command_type", "bot_commands");
+                    ValidateInput validateCmd = new ValidateInput(splitInput[0]);
+                    ValidateInput validateUser = new ValidateInput(splitInput[1]);
+                    ValidateInput validateType = new ValidateInput(splitInput[2]);
+
+                    boolean chekCmd = validateCmd.retValidation("command_type", "bot_commands");
+                    boolean chekUser = validateUser.retValidation("user_name","penalty_user");
+                    boolean chekTyp = validateType.retValidation("command_type", "bot_commands");
 
                     if (chekCmd == true && chekUser == true && chekTyp == true)
                     {
@@ -101,7 +103,7 @@ public class MrKrabs extends ActivityHandler {
             case ConfirmPenalty:
                 if(input.equalsIgnoreCase("Y"))
                 {
-                    String penaltyHandler = new PenaltyHandler(userInputTracker.name, userInputTracker.type).test();
+                    boolean penaltyHandler = new PenaltyHandler(userInputTracker.name, userInputTracker.type).retValidation("user_name", "penalty_user");
                     return turnContext.sendActivity(
                             MessageFactory.text(String.format(penaltyHandler+" Please type '/S' to start again."), null, null)
                     ).thenApply(sendResult -> null)

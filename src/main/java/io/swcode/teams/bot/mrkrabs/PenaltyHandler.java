@@ -1,8 +1,12 @@
 package io.swcode.teams.bot.mrkrabs;
 
-public class PenaltyHandler {
+public class PenaltyHandler implements DatabaseReportInterface{
     private String user;
     private String type;
+
+    private final String url = "jdbc:postgresql://localhost:5432/Penalty_bot";
+    private final String dbUser = "Zakir";
+    private final String passWord = "Zakir@413318";
 
 
     public PenaltyHandler(String user, String type)
@@ -11,12 +15,14 @@ public class PenaltyHandler {
         this.type = type;
     }
 
-    public String test()
-    {
-        String testReply = user+ " has been penaltied";
-        return testReply;
+
+    @Override
+    public void executeQuery(String tableRow, String tableName) {
+
     }
 
-
-
+    @Override
+    public boolean retValidation(String tableRow, String tableName) {
+        return false;
+    }
 }
