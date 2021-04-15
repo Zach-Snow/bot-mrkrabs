@@ -1,5 +1,7 @@
 # Mr. Krabs Bot
 
+Please use the main branch as the interim-branch is the one being worked on and sometimes might not work cause of unfinished work. 
+
 First, Keep in mind that this is a work in progress.
 
 This repository contains code for the MS teams bot I am currently develoing using  [Microsoft Bot Framework SDK](https://github.com/Microsoft/botframework-sdk), which is part of the Microsoft Bot Framework.
