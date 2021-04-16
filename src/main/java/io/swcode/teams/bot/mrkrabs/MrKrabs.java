@@ -4,7 +4,6 @@ import com.codepoetics.protonpack.collectors.CompletableFutures;
 import com.microsoft.bot.builder.*;
 import com.microsoft.bot.schema.ChannelAccount;
 import org.apache.commons.lang3.StringUtils;
-
 import java.util.concurrent.CompletableFuture;
 import java.util.List;
 
