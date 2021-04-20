@@ -27,7 +27,7 @@ dependencies {
 
 group = "io.swcode.teams.bot"
 version = "1.0.0"
-description = "io.swcode.teams.bot:dobbi"
+description = "io.swcode.teams.bot:mrkrabs"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 publishing {

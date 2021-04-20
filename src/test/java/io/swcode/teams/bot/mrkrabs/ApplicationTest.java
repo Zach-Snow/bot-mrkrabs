@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-package io.swcode.teams.bot.dobbi;
+package io.swcode.teams.bot.mrkrabs;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
