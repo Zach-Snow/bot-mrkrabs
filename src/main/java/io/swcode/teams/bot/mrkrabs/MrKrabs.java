@@ -69,9 +69,9 @@ public class MrKrabs extends ActivityHandler {
                     ValidateInput validateUser = new ValidateInput(splitInput[1]);
                     ValidateInput validateType = new ValidateInput(splitInput[2]);
 
-                    boolean chekCmd = validateCmd.retValidation("command_type", "bot_commands");
+                    boolean chekCmd = validateCmd.retValidation("command_type", "bot_command");
                     boolean chekUser = validateUser.retValidation("user_name","penalty_user");
-                    boolean chekTyp = validateType.retValidation("command_type", "bot_commands");
+                    boolean chekTyp = validateType.retValidation("command_type", "bot_command");
 
                     if (chekCmd == true && chekUser == true && chekTyp == true)
                     {

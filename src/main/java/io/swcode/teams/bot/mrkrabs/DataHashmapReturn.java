@@ -20,8 +20,8 @@ public class DataHashmapReturn implements  DatabaseViewableInterface{
             comDescConnection = DriverManager.getConnection(url, dbUser, passWord);
             Statement comStatement = comConnection.createStatement();
             Statement comDescStatement = comDescConnection.createStatement();
-            ResultSet retCommands = comStatement.executeQuery("SELECT "+getViewable+" FROM bot_commands ORDER BY id");
-            ResultSet retComDesc = comDescStatement.executeQuery("SELECT  command_desc  FROM bot_commands");
+            ResultSet retCommands = comStatement.executeQuery("SELECT "+getViewable+" FROM bot_command ORDER BY id");
+            ResultSet retComDesc = comDescStatement.executeQuery("SELECT  command_desc  FROM bot_command");
             ResultSetMetaData metaData = retCommands.getMetaData();
             int columns = metaData.getColumnCount();
             while (retCommands.next() && retComDesc.next())
