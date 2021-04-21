@@ -1,7 +1,6 @@
 package io.swcode.teams.bot.mrkrabs;
 
 import javax.persistence.*;
-
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity(name = "bot_command")
